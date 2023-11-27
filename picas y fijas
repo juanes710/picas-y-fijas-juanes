@@ -1,0 +1,1059 @@
+package SegundoSemestre;
+//Profe, yo fui el muchacho que pregunto acerca del switch case para el uso del break
+
+//el dia jueves 7 de octubre
+
+import java.util.Random;
+import java.util.Scanner;
+
+public class ProyectoEntrega3 {
+
+	public static void main(String[] args) {
+// TODO Auto-generated method stub
+		Scanner teclado = new Scanner(System.in);
+
+		System.out.println("Trabajo creado por Juan Esteban Guaqueta, Maria Paula Casas, Juan Diego Moreno");
+
+		System.out.println("Presione 1 para empezar");
+		int n, j;
+		String hola = null;
+
+		n = teclado.nextInt();
+		System.out.println("Presione 11 para jugar Jugador vs. Jugador");
+		System.out.println("Presione 22 para jugar Jugador vs Maquina");
+		j = teclado.nextInt();
+		String presione = comenzar(n);
+		System.out.println(presione);
+		String jugador = comenzar1(j);
+		System.out.println(jugador);
+
+		if (j == 11) {
+			System.out.println("�Con cuantos digitos quieren jugar?");
+			String juego = Jueguito(0, 0, 0, 0, 0);
+			System.out.println(juego);
+		} else {
+			System.out.println("Jugador vs maquina");
+			String juego = maquina(hola);
+			System.out.println(juego);
+		}
+
+	}
+
+	static String comenzar(int inicio) {
+		String inicio1 = "";
+		if (inicio == 1) {
+			return "Bienvenido Jugador";
+		}
+		if (inicio != 1) {
+			return "";
+		}
+		return inicio1;
+	}
+
+	static String comenzar1(int InicioJugador) {
+		String inicio2 = "";
+		if (InicioJugador == 11) {
+			return "Juego entre jugadores";
+		}
+		if (InicioJugador == 22) {
+			return "Jugar contra la maquina";
+		}
+		return inicio2;
+	}
+
+	static String Jueguito(int fijas, int m, int picas, int o, int o2) {
+		Scanner teclado = new Scanner(System.in);
+		String resultado_ganador = "";
+		String jugador1, jugador2;
+		m = teclado.nextInt();
+		if (m > 8 || m < 2) {
+			System.out.println("Numero mayor a 8 o menor a 2 no valido");
+		} else {
+			System.out.println("ADVERTENCIA");
+			System.out.println("No se pueden repetir digitos dentro del numero pensado");
+			System.out.println("Indique nombre de jugador 1");
+			jugador1 = teclado.next();
+			System.out.println("Indique nombre de jugador 2");
+			jugador2 = teclado.next();
+
+			for (int i = m; i != fijas; i++) {
+				if (fijas < m) {
+					System.out.println(jugador1 + " indique n�mero de " + jugador2);
+					o = teclado.nextInt();
+					System.out.println("�Cuantas fijas tiene?");
+					fijas = teclado.nextInt();
+					System.out.println("�Cuantas picas tiene?");
+					picas = teclado.nextInt();
+					if (fijas + picas > m) {
+						System.out.println("Error");
+						System.out.println("Gana " + jugador2);
+						System.out.println("Reinicie el juego");
+						break;
+					}
+					if (fijas < m) {
+						System.out.println(jugador2 + " indique n�mero de " + jugador1);
+						o2 = teclado.nextInt();
+						System.out.println("�Cuantas fijas tiene?");
+						fijas = teclado.nextInt();
+						System.out.println("�Cuantas picas tiene?");
+						picas = teclado.nextInt();
+						if (fijas + picas > m) {
+							System.out.println("Error");
+							System.out.println("Gana " + jugador1);
+							System.out.println("Reinice el juego");
+							break;
+						}
+					}
+				}
+			}
+			if (fijas + picas == m) {
+				System.out.println("Ha ganado");
+			}
+			if (fijas + picas > m) {
+				System.out.println("");
+			}
+		}
+		return resultado_ganador;
+
+	}
+
+	static String maquina(String args) {
+		Scanner teclado = new Scanner(System.in);
+		Random r = new Random();
+
+		int n1;
+		int n2;
+		int n3;
+		int n4;
+		int n5;
+		int n6;
+		int n7;
+		int n8;
+		int D = r.nextInt(10);
+		int F = r.nextInt(10);
+		int G = r.nextInt(10);
+		int H = r.nextInt(10);
+		int J = r.nextInt(10);
+		int K = r.nextInt(10);
+		int L = r.nextInt(10);
+		int A = r.nextInt(10);
+		while (D == F || D == G || D == H || D == J || D == K || D == L || D == A || F == G || F == H || F == J
+				|| F == K || F == L || F == A || G == H || G == J || G == K || G == L || G == A || H == J || H == K
+				|| H == L || H == A || J == K || J == L || J == A || K == L || K == A || L == A) {
+
+			D = r.nextInt(10);
+			F = r.nextInt(10);
+			G = r.nextInt(10);
+			H = r.nextInt(10);
+			J = r.nextInt(10);
+			K = r.nextInt(10);
+			L = r.nextInt(10);
+			A = r.nextInt(10);
+		}
+		System.out.println("con cuantas cifras quiere jugar?");
+		System.out.println("Numero mayor a 8 o menor a 2 no valido");
+		int N = teclado.nextInt();
+		System.out.println("Para jugar, ingrese digito por digito, NO el numero entero");
+		while (N>8||N<2) {
+			System.out.println("Reiniciar juego");
+			System.out.println("Introduzca un numero adecuado");
+			break;
+		}
+		if (N == 2) {
+			System.out.println("Empieza jugador");
+			System.out.println("ingrese digito 1");
+			n1 = teclado.nextInt();
+			System.out.println("ingrese digito 2");
+			n2 = teclado.nextInt();
+			System.out.println("has ingresado el numero " + n1 + n2);
+
+			while (PF2(n1, n2, D, F) != ("2 FIJAS") && n1 != n2) {
+
+				System.out.println("ingrese digito 1");
+				n1 = teclado.nextInt();
+				System.out.println("ingrese digito 2");
+				n2 = teclado.nextInt();
+				System.out.println("has ingresado el numero " + n1 + n2);
+			}
+			System.out.print("el numero de la maquina era " + D);
+			System.out.println(+F);
+		}
+
+		if (N == 3) {
+			System.out.println("Empieza jugador");
+			System.out.println("ingrese digito 1");
+			n1 = teclado.nextInt();
+			System.out.println("ingrese digito 2");
+			n2 = teclado.nextInt();
+			System.out.println("ingrese digito 3");
+			n3 = teclado.nextInt();
+			System.out.println("has ingresado el numero " + n1 + n2 + n3);
+
+			while (PF3(n1, n2, n3, D, F, G) != ("3 FIJAS") && (n1 != n2) && (n2 != n3) && (n1 != n3)) {
+
+				System.out.println("ingrese digito 1");
+				n1 = teclado.nextInt();
+				System.out.println("ingrese digito 2");
+				n2 = teclado.nextInt();
+				System.out.println("ingrese digito 3");
+				n3 = teclado.nextInt();
+				System.out.println("has ingresado el numero " + n1 + n2 + n3);
+
+			}
+			System.out.print("el numero de la maquina era " + D);
+			System.out.print(+F);
+			System.out.print(+G);
+
+		}
+		if (N == 4) {
+			System.out.println("Empieza jugador");
+			System.out.println("ingrese digito 1");
+			n1 = teclado.nextInt();
+			System.out.println("ingrese digito 2");
+			n2 = teclado.nextInt();
+			System.out.println("ingrese digito 3");
+			n3 = teclado.nextInt();
+			System.out.println("ingrese digito 4");
+			n4 = teclado.nextInt();
+
+			while (PF4(n1, n2, n3, n4, D, F, G, H) != ("4 FIJAS") && n1 != n2 && n2 != n3 && n3 != n4) {
+				System.out.println("ingrese digito 1");
+				n1 = teclado.nextInt();
+				System.out.println("ingrese digito 2");
+				n2 = teclado.nextInt();
+				System.out.println("ingrese digito 3");
+				n3 = teclado.nextInt();
+				System.out.println("ingrese digito 4");
+				n4 = teclado.nextInt();
+
+			}
+			System.out.print("el numero de la maquina era " + D);
+			System.out.print(+F);
+			System.out.print(+G);
+			System.out.print(+H);
+		}
+		if (N == 5) {
+			System.out.println("Empieza jugador");
+			System.out.println("ingrese digito 1");
+			n1 = teclado.nextInt();
+			System.out.println("ingrese digito 2");
+			n2 = teclado.nextInt();
+			System.out.println("ingrese digito 3");
+			n3 = teclado.nextInt();
+			System.out.println("ingrese digito 4");
+			n4 = teclado.nextInt();
+			System.out.println("ingrese digito 5");
+			n5 = teclado.nextInt();
+
+			while (PF5(n1, n2, n3, n4, n5, D, F, G, H, J) != ("5 FIJAS") && n1 != n2 && n2 != n3 && n3 != n4
+					&& n4 != n5) {
+				System.out.println("ingrese digito 1");
+				n1 = teclado.nextInt();
+				System.out.println("ingrese digito 2");
+				n2 = teclado.nextInt();
+				System.out.println("ingrese digito 3");
+				n3 = teclado.nextInt();
+				System.out.println("ingrese digito 4");
+				n4 = teclado.nextInt();
+				System.out.println("ingrese digito 5");
+				n5 = teclado.nextInt();
+
+			}
+			System.out.print("el numero de la maquina era " + D);
+			System.out.print(+F);
+			System.out.print(+G);
+			System.out.print(+H);
+			System.out.print(+J);
+		}
+		if (N == 6) {
+			System.out.println("Empieza jugador");
+			System.out.println("ingrese digito 1");
+			n1 = teclado.nextInt();
+			System.out.println("ingrese digito 2");
+			n2 = teclado.nextInt();
+			System.out.println("ingrese digito 3");
+			n3 = teclado.nextInt();
+			System.out.println("ingrese digito 4");
+			n4 = teclado.nextInt();
+			System.out.println("ingrese digito 5");
+			n5 = teclado.nextInt();
+			System.out.println("ingrese digito 6");
+			n6 = teclado.nextInt();
+
+			while (PF6(n1, n2, n3, n4, n5, n6, D, F, G, H, J, K) != ("6 FIJAS") && n1 != n2 && n2 != n3 && n3 != n4
+					&& n4 != n5 && n5 != n6) {
+				System.out.println("ingrese digito 1");
+				n1 = teclado.nextInt();
+				System.out.println("ingrese digito 2");
+				n2 = teclado.nextInt();
+				System.out.println("ingrese digito 3");
+				n3 = teclado.nextInt();
+				System.out.println("ingrese digito 4");
+				n4 = teclado.nextInt();
+				System.out.println("ingrese digito 5");
+				n5 = teclado.nextInt();
+				System.out.println("ingrese digito 6");
+				n6 = teclado.nextInt();
+
+			}
+			System.out.print("el numero de la maquina era " + D);
+			System.out.print(+F);
+			System.out.print(+G);
+			System.out.print(+H);
+			System.out.print(+J);
+			System.out.print(+K);
+		}
+		if (N == 7) {
+			System.out.println("Empieza jugador");
+			System.out.println("ingrese digito 1");
+			n1 = teclado.nextInt();
+			System.out.println("ingrese digito 2");
+			n2 = teclado.nextInt();
+			System.out.println("ingrese digito 3");
+			n3 = teclado.nextInt();
+			System.out.println("ingrese digito 4");
+			n4 = teclado.nextInt();
+			System.out.println("ingrese digito 5");
+			n5 = teclado.nextInt();
+			System.out.println("ingrese digito 6");
+			n6 = teclado.nextInt();
+			System.out.println("ingrese digito 7");
+			n7 = teclado.nextInt();
+
+			while (PF7(n1, n2, n3, n4, n5, n6, n7, D, F, G, H, J, K, L) != ("7 FIJAS") && n1 != n2 && n2 != n3
+					&& n3 != n4 && n4 != n5 && n5 != n6 && n6 != n7) {
+				System.out.println("ingrese digito 1");
+				n1 = teclado.nextInt();
+				System.out.println("ingrese digito 2");
+				n2 = teclado.nextInt();
+				System.out.println("ingrese digito 3");
+				n3 = teclado.nextInt();
+				System.out.println("ingrese digito 4");
+				n4 = teclado.nextInt();
+				System.out.println("ingrese digito 5");
+				n5 = teclado.nextInt();
+				System.out.println("ingrese digito 6");
+				n6 = teclado.nextInt();
+				System.out.println("ingrese digito 7");
+				n7 = teclado.nextInt();
+
+			}
+			System.out.print("el numero de la maquina era " + D);
+			System.out.print(+F);
+			System.out.print(+G);
+			System.out.print(+H);
+			System.out.print(+J);
+			System.out.print(+K);
+			System.out.print(+L);
+		}
+		if (N == 8) {
+			System.out.println("Empieza jugador");
+			System.out.println("ingrese digito 1");
+			n1 = teclado.nextInt();
+			System.out.println("ingrese digito 2");
+			n2 = teclado.nextInt();
+			System.out.println("ingrese digito 3");
+			n3 = teclado.nextInt();
+			System.out.println("ingrese digito 4");
+			n4 = teclado.nextInt();
+			System.out.println("ingrese digito 5");
+			n5 = teclado.nextInt();
+			System.out.println("ingrese digito 6");
+			n6 = teclado.nextInt();
+			System.out.println("ingrese digito 7");
+			n7 = teclado.nextInt();
+			System.out.println("ingrese digito 8");
+			n8 = teclado.nextInt();
+
+			while (PF8(n1, n2, n3, n4, n5, n6, n7, n8, D, F, G, H, J, K, L, A) != ("8 FIJAS") && n1 != n2 && n2 != n3
+					&& n3 != n4 && n4 != n5 && n5 != n6 && n6 != n7 && n7 != n8) {
+				System.out.println("ingrese digito 1");
+				n1 = teclado.nextInt();
+				System.out.println("ingrese digito 2");
+				n2 = teclado.nextInt();
+				System.out.println("ingrese digito 3");
+				n3 = teclado.nextInt();
+				System.out.println("ingrese digito 4");
+				n4 = teclado.nextInt();
+				System.out.println("ingrese digito 5");
+				n5 = teclado.nextInt();
+				System.out.println("ingrese digito 6");
+				n6 = teclado.nextInt();
+				System.out.println("ingrese digito 7");
+				n7 = teclado.nextInt();
+				System.out.println("ingrese digito 8");
+				n8 = teclado.nextInt();
+
+			}
+			System.out.print("el numero de la maquina era " + D);
+			System.out.print(+F);
+			System.out.print(+G);
+			System.out.print(+H);
+			System.out.print(+J);
+			System.out.print(+K);
+			System.out.print(+L);
+			System.out.print(+A);
+		}
+
+		return ("");
+	}
+
+	static String PF2(int n1, int n2, int D, int F) {
+		Random r = new Random();
+		Scanner teclado = new Scanner(System.in);
+		int N = 2;
+		int p = 0;
+		int f = 0;
+		int Q = r.nextInt(10);
+		int W = r.nextInt(10);
+
+		if ((n1 == D) && (n2 == F)) {
+			System.out.println("ganaste");
+			System.out.print("el digito era " + D);
+			System.out.println(+F);
+			return ("2 FIJAS");
+
+		} else {
+			if (n1 == n2) {
+				System.out.println("ingresar numeros repetidos no es valido");
+				System.out.println("Reiniciar el juego porfavor.");
+				
+			}
+			if (n1 == D) {
+				f = f + 1;
+			}
+			if (n2 == F) {
+				f = f + 1;
+			}
+			if ((n1 == F)) {
+				p = p + 1;
+			}
+			if ((n2 == D)) {
+				p = p + 1;
+			}
+			if (n1 != n2) {
+
+				System.out.println("Picas " + p + " Fijas " + f);
+				System.out.println("Turno de la maquina");
+				System.out.println("la maquina piensa que su numero es:" + W + Q);
+				while (Q == W) {
+					System.out.println("Error, maquina digite otro numero");
+					Q = r.nextInt(10);
+					W = r.nextInt(10);
+
+					System.out.println("la maquina piensa que su numero es:" + W + Q);
+					System.out.println("Picas de tu ultimo numero " + p + " Fijas de tu ultimo numero " + f);
+				}
+
+				System.out.println("Cuantas picas tiene?");
+
+				int pp = teclado.nextInt();
+				System.out.println("Cuantas fijas tiene?");
+				int ff = teclado.nextInt();
+				if (ff + pp > N) {
+					System.out.println("Error en la logica");
+					System.out.println("Gana la maquina" );
+					System.out.println("Reinicie el juego");
+					return "2 FIJAS";
+				}
+				if (ff == 2) {
+					System.out.println("gano maquina");
+					return ("2 FIJAS");
+				}
+				System.out.println("Picas " + pp + " Fijas " + ff);
+				System.out.println("Turno del jugador");
+
+			}
+		}
+		return ("");
+	}
+
+	static String PF3(int n1, int n2, int n3, int D, int F, int G) {
+		Random r = new Random();
+		Scanner teclado = new Scanner(System.in);
+		int p = 0;
+		int f = 0;
+		int Q = r.nextInt(10);
+		int W = r.nextInt(10);
+		int E = r.nextInt(10);
+		int N = 3;
+
+		if ((n1 == D) && (n2 == F) && (n3 == G)) {
+			System.out.println("ganaste");
+			System.out.print("el digito era " + D);
+			System.out.print(+F);
+			System.out.println(+G);
+			return ("3 FIJAS");
+
+		}
+
+		else {
+			if ((n1 == n2) || (n2 == n3) || (n1 == n3)) {
+				System.out.println("ingresar numeros repetidos no es valido");
+				System.out.println("Reiniciar el juego porfavor.");
+			}
+			if (n1 == D) {
+				f = f + 1;
+			}
+			if (n2 == F) {
+				f = f + 1;
+			}
+			if (n3 == G) {
+				f = f + 1;
+			}
+			if ((n1 == F) || (n1 == G)) {
+				p = p + 1;
+			}
+			if ((n2 == D) || (n2 == G)) {
+				p = p + 1;
+			}
+			if ((n3 == D) || (n3 == F)) {
+				p = p + 1;
+			}
+			if (n1 != n2 && n1 != n3 && n2 != n3) {
+
+				System.out.println("Picas " + p + " Fijas " + f);
+				System.out.println("Turno de la maquina");
+				System.out.println("la maquina piensa que su numero es:" + W + Q + E);
+				while (Q == W || Q == E || E == W) {
+					System.out.println("Error, maquina digite otro numero");
+					Q = r.nextInt(10);
+					W = r.nextInt(10);
+					E = r.nextInt(10);
+					System.out.println("la maquina piensa que su numero es:" + W + Q + E);
+					System.out.println("Picas de tu ultimo numero " + p + " Fijas de tu ultimo numero " + f);
+
+				}
+
+				System.out.println("Cuantas picas tiene?");
+
+				int pp = teclado.nextInt();
+				System.out.println("Cuantas fijas tiene?");
+				int ff = teclado.nextInt();if (ff + pp > N) {
+					System.out.println("Error en la logica");
+					System.out.println("Gana la maquina" );
+					System.out.println("Reinicie el juego");
+					return "3 FIJAS";
+				}
+				if (ff == 3) {
+					System.out.println("gano maquina");
+					return ("3 FIJAS");
+				}
+				System.out.println("Picas " + pp + " Fijas " + ff);
+				System.out.println("Turno del jugador");
+				if (ff == 3) {
+
+					return ("3 FIJAS MAQUINA");
+				}
+			}
+		}
+		return ("");
+	}
+
+	static String PF4(int n1, int n2, int n3, int n4, int D, int F, int G, int H) {
+		Random r = new Random();
+		Scanner teclado = new Scanner(System.in);
+		int p = 0;
+		int f = 0;
+		int Q = r.nextInt(10);
+		int W = r.nextInt(10);
+		int E = r.nextInt(10);
+		int R = r.nextInt(10);
+		int N = 4;
+
+		if ((n1 == D) && (n2 == F) && (n3 == G) && (n4 == H)) {
+			System.out.println("ganaste");
+			return ("4 FIJAS");
+		}
+
+		else {
+			if ((n1 == n2) || (n2 == n3) || (n1 == n3) || (n1 == n4) || (n2 == n4) || (n3 == n4)) {
+				System.out.println("ingresar numeros repetidos no es valido");
+				System.out.println("Reiniciar el juego porfavor.");
+			}
+			if (n1 == D) {
+				f = f + 1;
+			}
+			if (n2 == F) {
+
+				f = f + 1;
+			}
+			if (n3 == G) {
+				f = f + 1;
+			}
+			if (n4 == H) {
+				f = f + 1;
+			}
+			if ((n1 == F) || (n1 == G) || (n1 == H)) {
+				p = p + 1;
+			}
+			if ((n2 == D) || (n2 == G) || (n2 == H)) {
+				p = p + 1;
+			}
+			if ((n3 == D) || (n3 == F) || (n3 == H)) {
+
+				p = p + 1;
+			}
+			if ((n4 == D) || (n4 == F) || (n4 == G)) {
+				p = p + 1;
+			}
+
+			if (n1 != n2 && n1 != n3 && n1 != n4 && n2 != n3 && n2 != n4 && n3 != n4) {
+
+				System.out.println("Picas " + p + " Fijas " + f);
+				System.out.println("Turno de la maquina");
+				System.out.println("la maquina piensa que su numero es:" + Q + W + E + R);
+				while (Q == W || Q == E || Q == R || W == E || W == R || E == R) {
+					System.out.println("Error, maquina digite otro numero");
+					Q = r.nextInt(10);
+					W = r.nextInt(10);
+					E = r.nextInt(10);
+					R = r.nextInt(10);
+					System.out.println("la maquina piensa que su numero es:" + Q + W + E + R);
+					System.out.println("Picas de tu ultimo numero " + p + " Fijas de tu ultimo numero " + f);
+				}
+
+				System.out.println("Cuantas picas tiene?");
+				int pp = teclado.nextInt();
+				System.out.println("Cuantas fijas tiene?");
+				int ff = teclado.nextInt();
+				if (ff + pp > N) {
+					System.out.println("Error en la logica");
+					System.out.println("Gana la maquina" );
+					System.out.println("Reinicie el juego");
+					return "4 FIJAS";
+				}
+				if (ff == 4) {
+					System.out.println("gano maquina");
+					return ("4 FIJAS");
+				}
+				System.out.println("Picas " + pp + " Fijas " + ff);
+				System.out.println("Turno del jugador");
+			}
+			return ("");
+		}
+	}
+
+	static String PF5(int n1, int n2, int n3, int n4, int n5, int D, int F, int G, int H, int J) {
+		Random r = new Random();
+		Scanner teclado = new Scanner(System.in);
+		int p = 0;
+		int f = 0;
+		int Q = r.nextInt(10);
+		int W = r.nextInt(10);
+		int E = r.nextInt(10);
+		int R = r.nextInt(10);
+		int T = r.nextInt(10);
+		int N = 5;
+
+		if ((n1 == D) && (n2 == F) && (n3 == G) && (n4 == H) && (n5 == J)) {
+			System.out.println("ganaste");
+			return ("5 FIJAS");
+		} else {
+			if ((n1 == n2) || (n1 == n3) || (n1 == n4) || (n1 == n5) || (n2 == n3) || (n2 == n4) || (n2 == n5)
+					|| (n3 == n4) || (n3 == n5) || (n4 == n5)) {
+				System.out.println("ingresar numeros repetidos no es valido");
+				System.out.println("Reiniciar el juego porfavor.");
+			}
+
+			if (n1 == D) {
+				f = f + 1;
+			}
+			if (n2 == F) {
+				f = f + 1;
+			}
+			if (n3 == G) {
+				f = f + 1;
+			}
+			if (n4 == H) {
+				f = f + 1;
+			}
+			if (n5 == J) {
+				f = f + 1;
+			}
+			if ((n1 == F) || (n1 == G) || (n1 == H) || (n1 == J)) {
+				p = p + 1;
+			}
+			if ((n2 == D) || (n2 == G) || (n2 == H) || (n2 == J)) {
+				p = p + 1;
+			}
+			if ((n3 == D) || (n3 == F) || (n3 == H) || (n3 == J)) {
+				p = p + 1;
+			}
+			if ((n4 == D) || (n4 == F) || (n4 == G) || (n4 == J)) {
+				p = p + 1;
+			}
+			if ((n5 == D) || (n5 == F) || (n5 == G) || (n5 == H)) {
+				p = p + 1;
+			}
+
+			if (n1 != n2 && n1 != n3 && n1 != n4 && n1 != n5 && n2 != n3 && n2 != n4 && n2 != n5 && n3 != n4 && n3 != n5
+					&& n4 != n5) {
+
+				System.out.println("Picas " + p + " Fijas " + f);
+				System.out.println("Turno de la maquina");
+				System.out.println("la maquina piensa que su numero es:" + Q + W + E + R + T);
+				while (Q == W || Q == E || Q == R || Q == T || W == E || W == R || W == T || E == R || E == T
+						|| R == T) {
+					System.out.println("Error, maquina digite otro numero");
+					Q = r.nextInt(10);
+					W = r.nextInt(10);
+					E = r.nextInt(10);
+					R = r.nextInt(10);
+					T = r.nextInt(10);
+					System.out.println("la maquina piensa que su numero es:" + Q + W + E + R + T);
+					System.out.println("Picas de tu ultimo numero " + p + " Fijas de tu ultimo numero " + f);
+				}
+				System.out.println("Cuantas picas tiene?");
+				int pp = teclado.nextInt();
+				System.out.println("Cuantas fijas tiene?");
+				int ff = teclado.nextInt();
+				if (ff + pp > N) {
+					System.out.println("Error en la logica");
+					System.out.println("Gana la maquina" );
+					System.out.println("Reinicie el juego");
+					return "5 FIJAS";
+				}
+				if (ff == 5) {
+					System.out.println("gano maquina");
+					return ("5 FIJAS");
+				}
+				System.out.println("Picas " + pp + " Fijas " + ff);
+				System.out.println("Turno del jugador");
+			}
+
+			return ("");
+		}
+	}
+
+	static String PF6(int n1, int n2, int n3, int n4, int n5, int n6, int D, int F, int G, int H, int J, int K) {
+		Random r = new Random();
+		Scanner teclado = new Scanner(System.in);
+		int p = 0;
+		int f = 0;
+		int Q = r.nextInt(10);
+		int W = r.nextInt(10);
+		int E = r.nextInt(10);
+		int R = r.nextInt(10);
+		int T = r.nextInt(10);
+		int Y = r.nextInt(10);
+		int N = 6;
+
+		if ((n1 == D) && (n2 == F) && (n3 == G) && (n4 == H) && (n5 == J) && (n6 == K)) {
+			System.out.println("ganaste");
+			return ("6 FIJAS");
+		} else {
+			if ((n1 == n2) || (n1 == n3) || (n1 == n4) || (n1 == n5) || (n1 == n6) || (n2 == n3) || (n2 == n4)
+					|| (n2 == n5) || (n2 == n6) || (n3 == n4) || (n3 == n5) || (n3 == n6) || (n4 == n5) || (n4 == n6)
+					|| (n5 == n6)) {
+				System.out.println("ingresar numeros repetidos no es valido");
+				System.out.println("Reiniciar el juego porfavor.");
+			}
+			if (n1 == D) {
+				f = f + 1;
+			}
+			if (n2 == F) {
+				f = f + 1;
+			}
+			if (n3 == G) {
+				f = f + 1;
+			}
+			if (n4 == H) {
+				f = f + 1;
+			}
+			if (n5 == J) {
+				f = f + 1;
+			}
+			if (n6 == K) {
+				f = f + 1;
+			}
+			if ((n1 == F) || (n1 == G) || (n1 == H) || (n1 == J) || (n1 == K)) {
+				p = p + 1;
+			}
+			if ((n2 == D) || (n2 == G) || (n2 == H) || (n2 == J) || (n2 == K)) {
+				p = p + 1;
+			}
+			if ((n3 == D) || (n3 == F) || (n3 == H) || (n3 == J) || (n3 == K)) {
+				p = p + 1;
+			}
+			if ((n4 == D) || (n4 == F) || (n4 == G) || (n4 == J) || (n4 == K)) {
+				p = p + 1;
+			}
+			if ((n5 == D) || (n5 == F) || (n5 == G) || (n5 == H) || (n5 == K)) {
+				p = p + 1;
+			}
+			if ((n6 == D) || (n6 == F) || (n6 == G) || (n6 == H) || (n6 == J)) {
+				p = p + 1;
+			}
+
+			if (n1 != n2 && n1 != n3 && n1 != n4 && n1 != n5 && n1 != n6 && n2 != n3 && n2 != n4 && n2 != n5 && n2 != n6
+					&& n3 != n4 && n3 != n5 && n3 != n6 && n4 != n5 && n4 != n6 && n5 != n6) {
+
+				System.out.println("Picas " + p + " Fijas " + f);
+				System.out.println("Turno de la maquina");
+				System.out.println("la maquina piensa que su numero es:" + Q + W + E + R + T + Y);
+				while (Q == W || Q == E || Q == R || Q == T || Q == Y || W == E || W == R || W == T || W == Y | E == R
+						|| E == T || E == Y || R == T || R == Y || T == Y) {
+					System.out.println("Error, maquina digite otro numero");
+					Q = r.nextInt(10);
+					W = r.nextInt(10);
+					E = r.nextInt(10);
+					R = r.nextInt(10);
+					T = r.nextInt(10);
+					Y = r.nextInt(10);
+					System.out.println("la maquina piensa que su numero es:" + Q + W + E + R + T + Y);
+					System.out.println("Picas de tu ultimo numero " + p + " Fijas de tu ultimo numero " + f);
+				}
+				System.out.println("Cuantas picas tiene?");
+				int pp = teclado.nextInt();
+				System.out.println("Cuantas fijas tiene?");
+				int ff = teclado.nextInt();
+				if (ff + pp > N) {
+					System.out.println("Error en la logica");
+					System.out.println("Gana la maquina" );
+					System.out.println("Reinicie el juego");
+					return "6 FIJAS";
+				}
+				if (ff == 6) {
+					System.out.println("gano maquina");
+					return ("6 FIJAS");
+				}
+				System.out.println("Picas " + pp + " Fijas " + ff);
+				System.out.println("Turno del jugador");
+			}
+			return ("");
+		}
+	}
+
+	static String PF7(int n1, int n2, int n3, int n4, int n5, int n6, int n7, int D, int F, int G, int H, int J, int K,
+			int L) {
+		Random r = new Random();
+		Scanner teclado = new Scanner(System.in);
+		int p = 0;
+		int f = 0;
+		int Q = r.nextInt(10);
+		int W = r.nextInt(10);
+		int E = r.nextInt(10);
+		int R = r.nextInt(10);
+		int T = r.nextInt(10);
+		int Y = r.nextInt(10);
+		int U = r.nextInt(10);
+		int N = 7;
+
+		while (D == F && F == G && G == H && H == J && J == K && K == L) {
+			break;
+		}
+		if ((n1 == D) && (n2 == F) && (n3 == G) && (n4 == H) && (n5 == J) && (n6 == K) && (n7 == L)) {
+			System.out.println("ganaste");
+			return ("7 FIJAS");
+		} else {
+			if ((n1 == n2) || (n1 == n3) || (n1 == n4) || (n1 == n5) || (n1 == n6) || (n1 == n7) || (n2 == n3)
+					|| (n2 == n4) || (n2 == n5) || (n2 == n6) || (n2 == n7) || (n3 == n4) || (n3 == n5) || (n3 == n6)
+					|| (n3 == n7) || (n4 == n5) || (n4 == n6) || (n4 == n7) || (n5 == n6) || (n5 == n7) || (n6 == n7)) {
+				System.out.println("ingresar numeros repetidos no es valido");
+				System.out.println("Reiniciar el juego porfavor.");
+			}
+			if (n1 == D) {
+				f = f + 1;
+			}
+			if (n2 == F) {
+				f = f + 1;
+			}
+			if (n3 == G) {
+				f = f + 1;
+			}
+			if (n4 == H) {
+				f = f + 1;
+			}
+			if (n5 == J) {
+				f = f + 1;
+			}
+			if (n6 == K) {
+				f = f + 1;
+			}
+			if (n7 == L) {
+				f = f + 1;
+			}
+			if ((n1 == F) || (n1 == G) || (n1 == H) || (n1 == J) || (n1 == K) || (n1 == L)) {
+				p = p + 1;
+			}
+			if ((n2 == D) || (n2 == G) || (n2 == H) || (n2 == J) || (n2 == K) || (n2 == L)) {
+				p = p + 1;
+			}
+			if ((n3 == D) || (n3 == F) || (n3 == H) || (n3 == J) || (n3 == K) || (n3 == L)) {
+				p = p + 1;
+			}
+			if ((n4 == D) || (n4 == F) || (n4 == G) || (n4 == J) || (n4 == K) || (n4 == L)) {
+				p = p + 1;
+			}
+			if ((n5 == D) || (n5 == F) || (n5 == G) || (n5 == H) || (n5 == K) || (n5 == L)) {
+				p = p + 1;
+			}
+			if ((n6 == D) || (n6 == F) || (n6 == G) || (n6 == H) || (n6 == J) || (n6 == L)) {
+				p = p + 1;
+			}
+			if ((n7 == D) || (n7 == F) || (n7 == G) || (n7 == H) || (n7 == J) || (n7 == K)) {
+				p = p + 1;
+			}
+
+			if (n1 != n2 && n1 != n3 && n1 != n4 && n1 != n5 && n1 != n6 && n1 != n7 && n2 != n3 && n2 != n4 && n2 != n5
+					&& n2 != n6 && n2 != n7 && n3 != n4 && n3 != n5 && n3 != n6 && n3 != n7 && n4 != n5 && n4 != n6
+					&& n4 != n7 && n5 != n6 && n5 != n7 && n6 != n7) {
+				System.out.println("Picas " + p + " Fijas " + f);
+				System.out.println("Turno de la maquina");
+				System.out.println("la maquina piensa que su numero es:" + Q + W + E + R + T + Y + U);
+				while (Q == W || Q == E || Q == R || Q == T || Q == Y || Q == U || W == E || W == R || W == T || W == Y
+						|| W == U || E == R || E == T || E == Y || E == U || R == T || R == Y || R == U || T == Y
+						|| T == U || Y == U) {
+					System.out.println("Error, maquina digite otro numero");
+					Q = r.nextInt(10);
+					W = r.nextInt(10);
+					E = r.nextInt(10);
+					R = r.nextInt(10);
+					T = r.nextInt(10);
+					Y = r.nextInt(10);
+					U = r.nextInt(10);
+					System.out.println("la maquina piensa que su numero es:" + Q + W + E + R + T + Y + U);
+					System.out.println("Picas de tu ultimo numero " + p + " Fijas de tu ultimo numero " + f);
+				}
+
+				System.out.println("Cuantas picas tiene?");
+				int pp = teclado.nextInt();
+				System.out.println("Cuantas fijas tiene?");
+				int ff = teclado.nextInt();
+				if (ff + pp > N) {
+					System.out.println("Error en la logica");
+					System.out.println("Gana la maquina" );
+					System.out.println("Reinicie el juego");
+					return "7 FIJAS";
+				}
+				if (ff == 7) {
+					System.out.println("gano maquina");
+					return ("7 FIJAS");
+				}
+				System.out.println("Picas " + pp + " Fijas " + ff);
+				System.out.println("Turno del jugador");
+			}
+			return ("");
+		}
+	}
+
+	static String PF8(int n1, int n2, int n3, int n4, int n5, int n6, int n7, int n8, int D, int F, int G, int H, int J,
+			int K, int L, int A) {
+		Random r = new Random();
+		Scanner teclado = new Scanner(System.in);
+		int p = 0;
+		int f = 0;
+		int Q = r.nextInt(10);
+		int W = r.nextInt(10);
+		int E = r.nextInt(10);
+		int R = r.nextInt(10);
+		int T = r.nextInt(10);
+		int Y = r.nextInt(10);
+		int U = r.nextInt(10);
+		int I = r.nextInt(10);
+		int N = 8;
+
+		if ((n1 == D) && (n2 == F) && (n3 == G) && (n4 == H) && (n5 == J) && (n6 == K) && (n7 == L) && (n8 == A)) {
+			System.out.println("ganaste");
+			return ("8 FIJAS");
+		} else {
+			if ((n1 == n2) || (n1 == n3) || (n1 == n4) || (n1 == n5) || (n1 == n6) || (n1 == n7) || (n1 == n8)
+					|| (n2 == n3) || (n2 == n4) || (n2 == n5) || (n2 == n6) || (n2 == n7) || (n2 == n8) || (n3 == n4)
+					|| (n3 == n5) || (n3 == n6) || (n3 == n7) || (n3 == n8) || (n4 == n5) || (n4 == n6) || (n4 == n7)
+					|| (n4 == n8) || (n5 == n6) || (n5 == n7) || (n5 == n8) || (n6 == n7) || (n6 == n7) || (n6 == n8)
+					|| (n7 == n8)) {
+				System.out.println("ingresar numeros repetidos no es valido");
+				System.out.println("Reiniciar el juego porfavor.");
+			}
+			if (n1 == D) {
+				f = f + 1;
+			}
+			if (n2 == F) {
+				f = f + 1;
+			}
+			if (n3 == G) {
+				f = f + 1;
+			}
+			if (n4 == H) {
+				f = f + 1;
+			}
+			if (n5 == J) {
+				f = f + 1;
+			}
+			if (n6 == K) {
+				f = f + 1;
+			}
+			if (n7 == L) {
+				f = f + 1;
+			}
+			if (n8 == A) {
+				f = f + 1;
+			}
+			if ((n1 == F) || (n1 == G) || (n1 == H) || (n1 == J) || (n1 == K) || (n1 == L) || (n1 == A)) {
+				p = p + 1;
+			}
+			if ((n2 == D) || (n2 == G) || (n2 == H) || (n2 == J) || (n2 == K) || (n2 == L) || (n2 == A)) {
+				p = p + 1;
+			}
+			if ((n3 == D) || (n3 == F) || (n3 == H) || (n3 == J) || (n3 == K) || (n3 == L) || (n3 == A)) {
+				p = p + 1;
+			}
+			if ((n4 == D) || (n4 == F) || (n4 == G) || (n4 == J) || (n4 == K) || (n4 == L) || (n4 == A)) {
+				p = p + 1;
+			}
+			if ((n5 == D) || (n5 == F) || (n5 == G) || (n5 == H) || (n5 == K) || (n5 == L) || (n5 == A)) {
+				p = p + 1;
+			}
+			if ((n6 == D) || (n6 == F) || (n6 == G) || (n6 == H) || (n6 == J) || (n6 == L) || (n6 == A)) {
+				p = p + 1;
+			}
+			if ((n7 == D) || (n7 == F) || (n7 == G) || (n7 == H) || (n7 == J) || (n7 == K) || (n7 == A)) {
+				p = p + 1;
+			}
+			if ((n8 == D) || (n8 == F) || (n8 == G) || (n8 == H) || (n8 == J) || (n8 == K) || (n8 == L)) {
+				p = p + 1;
+			}
+			if (n1 != n2 && n1 != n3 && n1 != n4 && n1 != n5 && n1 != n6 && n1 != n7 && n1 != n8 && n2 != n3 && n2 != n4
+					&& n2 != n5 && n2 != n6 && n2 != n7 && n2 != n8 && n3 != n4 && n3 != n5 && n3 != n6 && n3 != n7
+					&& n3 != n8 && n4 != n5 && n4 != n6 && n4 != n7 && n4 != n8 && n5 != n6 && n5 != n7 && n5 != n8
+					&& n6 != n7 && n6 != n8 && n7 != n8) {
+				System.out.println("Picas " + p + " Fijas " + f);
+				System.out.println("Turno de la maquina");
+				System.out.println("la maquina piensa que su numero es:" + Q + W + E + R + T + Y + U + I);
+				while (Q == W || Q == E || Q == R || Q == T || Q == Y || Q == U || Q == I || W == E || W == R || W == T
+						|| W == Y || W == U || W == I || E == R || E == T || E == Y || E == U || E == I || R == T
+						|| R == Y || R == U || R == I || T == Y || T == U || T == I || Y == U || Y == I || U == I) {
+					System.out.println("Error, maquina digite otro numero");
+					Q = r.nextInt(10);
+					W = r.nextInt(10);
+					E = r.nextInt(10);
+					R = r.nextInt(10);
+					T = r.nextInt(10);
+					Y = r.nextInt(10);
+					U = r.nextInt(10);
+					I = r.nextInt(10);
+					System.out.println("la maquina piensa que su numero es:" + Q + W + E + R + T + Y + U + I);
+					System.out.println("Picas de tu ultimo numero " + p + " Fijas de tu ultimo numero " + f);
+				}
+				System.out.println("Cuantas picas tiene?");
+				int pp = teclado.nextInt();
+				System.out.println("Cuantas fijas tiene?");
+				int ff = teclado.nextInt();
+				if (ff + pp > N) {
+					System.out.println("Error en la logica");
+					System.out.println("Gana la maquina" );
+					System.out.println("Reinicie el juego");
+					return "8 FIJAS";
+				}
+				if (ff == 8) {
+					System.out.println("gano maquina");
+					return ("8 FIJAS");
+				}
+				System.out.println("Picas " + pp + " Fijas " + ff);
+				System.out.println("Turno del jugador");
+			}
+			return ("");
+		}
+	}
+}
